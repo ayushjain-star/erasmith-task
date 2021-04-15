@@ -12,7 +12,7 @@ def check_title(site,title):
 		return false
 
 def check_status(site):
-	soup = bs(requests.get(site['site']).text,"html.parser)
+	soup = bs(requests.get(site['site']).text,"html.parser")
 	title = soup.find('h1',attrs={"class","site-title"})
 	return check_title(site,title)
 
