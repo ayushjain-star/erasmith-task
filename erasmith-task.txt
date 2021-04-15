@@ -6,18 +6,18 @@ from emailer import send_to_main
 from bs4 import BeautifulSoup as bs
 
 def check_title(site,title):
-	if(title==site["text"]):
+	if(title == site["text"]):
 		return true
 	else:
 		return false
 
 def check_status(site):
-	soup=bs(requests.get(site['site']).text,"html.parser)
-	title=soup.find('h1',attrs={"class","site-title"})
+	soup = bs(requests.get(site['site']).text,"html.parser)
+	title = soup.find('h1',attrs={"class","site-title"})
 	return check_title(site,title)
 
 with open("sites.json") as file:
-	sites=json.load(file)
+	sites = json.load(file)
 
 	for site in sites:
 		if (check_status(site) == true):
